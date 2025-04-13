@@ -8,7 +8,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 
-// Setting up the logger
+// logger
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(),
@@ -20,7 +20,7 @@ const logger = winston.createLogger({
 
 app.use(cors());
 
-// Rate limiter middleware
+// rate limiter middleware
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000,
     max: 5
@@ -29,7 +29,7 @@ app.use(limiter);
 
 app.use(express.json());
 
-// Payment Endpoint 
+// payment endpoint 
 app.post('/pay', async (req, res) => {
     const { price } = req.body;
 
@@ -54,7 +54,7 @@ app.post('/pay', async (req, res) => {
     }
 });
 
-// Creating subscription based on user's choice of plan
+// creating subscription based on users choice of plan
 app.post('/create-subscription', async (req, res) => {
     const { email, source, plan_id } = req.body;
 
@@ -77,7 +77,7 @@ app.post('/create-subscription', async (req, res) => {
     }
 });
 
-// Canceling subscription 
+// canceling subscription 
 app.post('/cancel-subscription', async (req, res) => {
     try {
         const { subscriptionId } = req.body;
