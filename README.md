@@ -1,0 +1,1 @@
+Righthand is a mobile app made for both Android and IOS built by students for students. By simply taking a picture of any text, it can generate a quiz, summary, true or false questions or a simple explanation.
